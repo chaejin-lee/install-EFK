@@ -333,6 +333,7 @@ spec:
       containers:
       - name: fluentd
         image: fluent/fluentd-kubernetes-daemonset:{FLUENTD_VERSION}
+        command: ["/bin/bash", "-c", "fluentd -c /fluentd/etc/fluent.conf -p /fluentd/plugins"]
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
             value: "elasticsearch.kube-logging.svc.cluster.local"
